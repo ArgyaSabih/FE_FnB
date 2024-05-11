@@ -3,10 +3,10 @@ import React from "react";
 import TotalOrder from "./TotalOrder";
 
 import {useNavigate} from "react-router-dom";
-import {menuItems} from "../page";
+import {menuItems} from "../routes";
 
 export default function Menu({totalOrder, onClickItem, selectedItem, totalPrice}) {
-  const navigate = useNavigate();
+  const navigateToDetailMenu = useNavigate();
 
   return (
     <section className="pb-4 bg-white">
@@ -23,7 +23,7 @@ export default function Menu({totalOrder, onClickItem, selectedItem, totalPrice}
                   className="pt-1.5"
                   onClick={() => {
                     onClickItem(item);
-                    navigate("/detail-menu");
+                    navigateToDetailMenu("/detail-menu");
                   }}
                 >
                   <svg

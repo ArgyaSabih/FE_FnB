@@ -2,7 +2,7 @@
 import React, {useState} from "react";
 
 export default function FilterMenu() {
-  const buttons = ["Populer", "Diskon", "Makanan", "Minuman"];
+  const buttons = ["Popular", "Discount", "Food", "Beverage"];
   const [selectedButton, setSelectedButton] = useState(null);
 
   return (

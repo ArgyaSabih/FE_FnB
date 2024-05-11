@@ -1,8 +1,9 @@
 import React from "react";
+import {useNavigate} from "react-router-dom";
 
 export default function TotalOrder({totalOrder, totalPrice}) {
-  function formatPrice(price) {
-    let priceString = price.toString();
+  function formatPrice(totalPrice) {
+    let priceString = totalPrice.toString();
     if (priceString.includes(".")) {
       const [integerPart, decimalPart] = priceString.split(".");
       if (decimalPart.length < 3) {
@@ -17,9 +18,16 @@ export default function TotalOrder({totalOrder, totalPrice}) {
     }
   }
 
+  const navigateToCheckout = useNavigate();
+
   return (
     <>
-      <button className="sticky left-0 w-full p-4 pl-6 mt-4 text-sm text-white bg-black rounded-full bottom-2 text-start">
+      <button
+        className="sticky left-0 w-full p-4 pl-6 mt-4 text-sm text-white bg-black rounded-full bottom-2 text-start"
+        onClick={() => {
+          navigateToCheckout("/checkout");
+        }}
+      >
         Ordered <span className="font-bold">{totalOrder}</span> for{" "}
         <span className="font-bold">Rp {formatPrice(totalPrice)}</span>
         <svg

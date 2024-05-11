@@ -1,5 +1,5 @@
 import React from "react";
-import {menuItems} from "../page";
+import {menuItems} from "../routes";
 import ButtonDetailMenu from "../components/ButtonDetailMenu";
 
 import {useNavigate} from "react-router-dom";
@@ -14,7 +14,7 @@ export default function DetailMenu({
   text,
   disabled
 }) {
-  const navigate = useNavigate();
+  const navigateToHome = useNavigate();
 
   if (!selectedItem || typeof selectedItem !== "object") {
     return null;
@@ -27,11 +27,11 @@ export default function DetailMenu({
   }
 
   return (
-    <div className={"h-screen bg-white"}>
-      <header className="flex pt-8">
+    <div className={"h-screen bg-white overflow-hidden"}>
+      <header className="flex pt-4">
         <button
           onClick={() => {
-            navigate("/");
+            navigateToHome("/");
             onClose();
           }}
         >
