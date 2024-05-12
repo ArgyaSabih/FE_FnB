@@ -1,8 +1,9 @@
 import React from "react";
-import {menuItems} from "../routes";
+import { menuItems } from "../routes";
 import ButtonIncrementDecrement from "../components/ButtonIncrementDecrement";
+import { useNavigate } from "react-router-dom";
 
-export default function Checkout({totalPrice, totalOrder, totalItem}) {
+export default function Checkout({ totalPrice, totalOrder, totalItem }) {
   function formatPrice(totalPrice) {
     let priceString = totalPrice.toString();
     if (priceString.includes(".")) {
@@ -18,6 +19,8 @@ export default function Checkout({totalPrice, totalOrder, totalItem}) {
       return `${priceString}.000`;
     }
   }
+
+  const navigateToPayment = useNavigate();
 
   return (
     <div className="h-screen overflow-hidden bg-white">
@@ -44,9 +47,13 @@ export default function Checkout({totalPrice, totalOrder, totalItem}) {
         <div className="font-semibold">Rp {formatPrice(totalPrice)}</div>
       </div>
       <div className="w-4/5 mx-auto text-xs italic text-center opacity-70">
-        By clicking order, you confirm that you're 18+ and you agree to the term and condition
+        By clicking order, you confirm that you're 18+ and you agree to the term
+        and condition
       </div>
-      <button className="absolute justify-center w-11/12 p-4 px-4 text-sm font-semibold text-center text-white bg-black rounded-full bottom-3">
+      <button
+        className="absolute justify-center w-11/12 p-4 px-4 text-sm font-semibold text-center text-white bg-black rounded-full bottom-3"
+        onClick={() => navigateToPayment("/payment")}
+      >
         Order Now
       </button>
     </div>
