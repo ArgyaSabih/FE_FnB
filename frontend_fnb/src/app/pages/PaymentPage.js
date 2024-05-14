@@ -10,69 +10,73 @@ export default function PaymentPage() {
   const navigateToComplete = useNavigate();
 
   return (
-    <div className="container m-0 w-screen h-screen bg-gradient-to-b from-[#eeeeee] to-white">
+    <div className="container m-0 w-screen h-screen bg-gradient-to-b from-[#eeeeee] via-[#eeeeee] via to-white">
       <div className="">
-        <div className="pt-8 mb-3 container flex justify-center">
+        <div className="pt-6 mb-3 container flex justify-center">
           <svg
-            width="46"
-            height="46"
-            viewBox="0 0 46 46"
+            width="56"
+            height="56"
+            viewBox="0 0 56 56"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
             <path
-              d="M23 0.25C18.5005 0.25 14.102 1.58426 10.3608 4.08407C6.61957 6.58387 3.70364 10.1369 1.98175 14.294C0.259857 18.451 -0.190669 23.0252 0.687145 27.4383C1.56496 31.8514 3.73169 35.905 6.91333 39.0867C10.095 42.2683 14.1486 44.4351 18.5617 45.3129C22.9748 46.1907 27.549 45.7402 31.7061 44.0183C35.8631 42.2964 39.4161 39.3804 41.9159 35.6392C44.4157 31.898 45.75 27.4995 45.75 23C45.7436 16.9683 43.3447 11.1854 39.0797 6.92036C34.8146 2.65528 29.0317 0.25637 23 0.25ZM23 42.25C19.1927 42.25 15.4709 41.121 12.3053 39.0058C9.13964 36.8906 6.67232 33.8841 5.21533 30.3667C3.75834 26.8492 3.37713 22.9786 4.11989 19.2445C4.86266 15.5104 6.69604 12.0804 9.3882 9.3882C12.0804 6.69603 15.5104 4.86265 19.2445 4.11988C22.9787 3.37712 26.8492 3.75833 30.3667 5.21532C33.8841 6.67231 36.8906 9.13963 39.0058 12.3053C41.121 15.4709 42.25 19.1927 42.25 23C42.2442 28.1036 40.2142 32.9966 36.6054 36.6054C32.9966 40.2142 28.1037 42.2442 23 42.25ZM37 23C37 23.4641 36.8156 23.9093 36.4874 24.2374C36.1593 24.5656 35.7141 24.75 35.25 24.75H23C22.5359 24.75 22.0908 24.5656 21.7626 24.2374C21.4344 23.9093 21.25 23.4641 21.25 23V10.75C21.25 10.2859 21.4344 9.84075 21.7626 9.51256C22.0908 9.18437 22.5359 9 23 9C23.4641 9 23.9093 9.18437 24.2374 9.51256C24.5656 9.84075 24.75 10.2859 24.75 10.75V21.25H35.25C35.7141 21.25 36.1593 21.4344 36.4874 21.7626C36.8156 22.0908 37 22.5359 37 23Z"
+              d="M28 5.25C23.5005 5.25 19.102 6.58426 15.3608 9.08407C11.6196 11.5839 8.70364 15.1369 6.98175 19.294C5.25986 23.451 4.80933 28.0252 5.68715 32.4383C6.56496 36.8514 8.73169 40.905 11.9133 44.0867C15.095 47.2683 19.1486 49.4351 23.5617 50.3129C27.9748 51.1907 32.549 50.7402 36.7061 49.0183C40.8631 47.2964 44.4161 44.3804 46.9159 40.6392C49.4157 36.898 50.75 32.4995 50.75 28C50.7436 21.9683 48.3447 16.1854 44.0797 11.9204C39.8146 7.65528 34.0317 5.25637 28 5.25ZM28 47.25C24.1927 47.25 20.4709 46.121 17.3053 44.0058C14.1396 41.8906 11.6723 38.8841 10.2153 35.3667C8.75834 31.8492 8.37713 27.9786 9.11989 24.2445C9.86266 20.5104 11.696 17.0804 14.3882 14.3882C17.0804 11.696 20.5104 9.86265 24.2445 9.11988C27.9787 8.37712 31.8492 8.75833 35.3667 10.2153C38.8841 11.6723 41.8906 14.1396 44.0058 17.3053C46.121 20.4709 47.25 24.1927 47.25 28C47.2442 33.1036 45.2142 37.9966 41.6054 41.6054C37.9966 45.2142 33.1037 47.2442 28 47.25ZM42 28C42 28.4641 41.8156 28.9093 41.4874 29.2374C41.1593 29.5656 40.7141 29.75 40.25 29.75H28C27.5359 29.75 27.0908 29.5656 26.7626 29.2374C26.4344 28.9093 26.25 28.4641 26.25 28V15.75C26.25 15.2859 26.4344 14.8408 26.7626 14.5126C27.0908 14.1844 27.5359 14 28 14C28.4641 14 28.9093 14.1844 29.2374 14.5126C29.5656 14.8408 29.75 15.2859 29.75 15.75V26.25H40.25C40.7141 26.25 41.1593 26.4344 41.4874 26.7626C41.8156 27.0908 42 27.5359 42 28Z"
               fill="#DEA027"
             />
           </svg>
         </div>
-        <div className="mt-3 font-bold flex justify-center">
+        <div className="mt-2 text-xs font-semibold flex justify-center">
           Waiting for payment
         </div>
       </div>
       <div className="my-5">
-        <div className="mx-15 rounded-lg bg-white">
-          <div className="mx-15 px-4 pt-4">
-            <h2 className="font-bold flex text-lg">Payment Step</h2>
+        <div className="mx-15 rounded-2xl border-solid border-[1px] border-[#e8e8e8] bg-white">
+          <div className="px-5 pt-6 pb-9">
+            <h2 className="font-semibold pb-5 flex text-sm">Payment Step</h2>
             <ol className="list-decimal">
               {" "}
               {/* Gimana caranya bikin lingkaran dg angka di dalam??? */}
-              <li className="text-[#666666]">
+              <li className="text-xs text-[#666666]">
                 Lorem ipsum dolor sit amet consectetur. Nulla non commodo vitae
                 sagittis diam pretium.{" "}
               </li>{" "}
-              <li className="text-[#666666]">
+              <li className="py-4 text-xs text-[#666666]">
                 Eget quis neque turpis quis hendrerit. Proin cras iaculis et
                 urna lacus eget.{" "}
               </li>{" "}
-              <li className="text-[#666666]">
+              <li className="text-xs text-[#666666]">
                 Varius turpis scelerisque viverra aliquet lectus eros.
               </li>
             </ol>
           </div>
         </div>
-        <div className="mt-10 mx-15 rounded-lg bg-white">
-          <div className="p-4">
+        <div className="mt-3 rounded-2xl border-[1px] border-solid border-[#e8e8e8] bg-white">
+          <div className="p-5">
             <div className="">
-              <h2 className="flex font-bold text-lg">Ordered</h2>
+              <h2 className="flex font-semibold pt-1 pb-2 text-sm">Ordered</h2>
             </div>
-            <div className="mt-5">
+            <div className="">
               <ul>
                 {cartItems?.map((item) => (
-                  <li key={item.id} className="flex justify-between">
-                    <span className="flex font-semibold">{item.name}</span>
+                  <li
+                    key={item.id}
+                    className="flex text-xs pt-3 justify-between"
+                  >
+                    <span className="flex font-medium">{item.name}</span>
                     <div className="flex justify-end mr-6">
-                      <span className="flex mr-4 text-[#999999]">
+                      <span className="flex mr-4 text-[10px] text-[#999999]">
                         x{item.amount}
                       </span>
-                      <span className="flex font-bold">Rp 45.000,00</span>
+                      <span className="flex font-semibold">Rp 45.000,00</span>
                     </div>
                   </li>
                 ))}
               </ul>
             </div>
-            <div className="flex justify-between mr-6 mt-5 font-bold">
-              Total Payment <span>Rp 135.000,00</span>
+            <div className="flex justify-between pt-5 mr-6 font-bold">
+              <span className="text-xs">Total Payment</span>
+              <span className="text-sm">Rp 270.000,00</span>
             </div>
           </div>
         </div>

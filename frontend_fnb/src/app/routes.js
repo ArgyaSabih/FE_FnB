@@ -68,6 +68,18 @@ const cartItems = [
     amount: 1,
     price: 30000,
   },
+  {
+    id: 3,
+    name: "Japanese Chicken Gyoza",
+    amount: 1,
+    price: 30000,
+  },
+  {
+    id: 4,
+    name: "Japanese Chicken Gyoza",
+    amount: 2,
+    price: 45000,
+  },
 ];
 
 export { menuItems };
