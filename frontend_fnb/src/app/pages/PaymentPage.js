@@ -1,12 +1,15 @@
 import React from "react";
 
 // Fokus bikin komponen-komponen utamanya dulu. localhost/payment return 404
+import { cartItems } from "../routes";
 
 export default function PaymentPage() {
+  function totalPrice(price, amount) {}
+
   return (
-    <div className="h-screen w-screen bg-[#eeeeee] fixed m-0 items-center text-center">
-      <div className="m-8">
-        <div className="mb-3 container flex justify-center justify-self-center">
+    <section className="container bg-gradient-to-b from-[#eeeeee] to-white">
+      <div className="">
+        <div className="pt-8 mb-3 container flex justify-center">
           <svg
             width="46"
             height="46"
@@ -20,33 +23,60 @@ export default function PaymentPage() {
             />
           </svg>
         </div>
-        <div className="mt-3 font-bold">Waiting for payment</div>
+        <div className="mt-3 font-bold flex justify-center">
+          Waiting for payment
+        </div>
       </div>
-      <div className="my-5">
-        <div>
-          <div className="">
-            <h2>Payment Step</h2>
-            <ol className="">
+      <div className="py-5">
+        <div className="px-15 rounded-lg">
+          <div className="px-15 rounded-lg">
+            <h2 className="font-bold flex">Payment Step</h2>
+            <ol className="list-style-decimal">
               {" "}
               {/* Gimana caranya bikin lingkaran dg angka di dalam??? */}
-              <li>
+              <li className="block">
                 Lorem ipsum dolor sit amet consectetur. Nulla non commodo vitae
                 sagittis diam pretium.{" "}
               </li>{" "}
-              <li>
+              <li className="flex justify-start">
                 Eget quis neque turpis quis hendrerit. Proin cras iaculis et
                 urna lacus eget.{" "}
               </li>{" "}
-              <li>Varius turpis scelerisque viverra aliquet lectus eros.</li>
+              <li className="flex justify-start">
+                Varius turpis scelerisque viverra aliquet lectus eros.
+              </li>
             </ol>
           </div>
         </div>
-        <div>
+        <div className="pt-10 mx-15 rounded-lg shadow-xl bg-slate-50">
           <div className="">
-            <h2>Ordered</h2>
+            <h2 className="flex">Ordered</h2>
           </div>
+          <div>
+            <ul>
+              {cartItems?.map((item) => (
+                <li key={item.id} className="flex justify-between">
+                  <span className="flex">{item.name}</span>
+                  <div className="flex justify-end mr-6">
+                    <span className="flex mr-4">x{item.amount}</span>
+                    <span className="flex">Rp 45.000,00</span>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="flex justify-between mr-6">
+            Total Payment <span>Rp 135.000,00</span>
+          </div>
+          <div></div>
         </div>
       </div>
-    </div>
+      <button
+        className="absolute justify-center w-11/12 p-4 px-4 text-sm font-semibold text-center text-white bg-black rounded-full bottom-3"
+        onClick={() => navigateToPayment("/completed")}
+      >
+        Done
+      </button>
+    </section>
   );
 }

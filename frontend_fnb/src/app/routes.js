@@ -55,7 +55,23 @@ const menuItems = [
   },
 ];
 
+const cartItems = [
+  {
+    id: 1,
+    name: "Japanese Chicken Gyoza",
+    amount: 2,
+    price: 45000,
+  },
+  {
+    id: 2,
+    name: "Japanese Chicken Gyoza",
+    amount: 1,
+    price: 30000,
+  },
+];
+
 export { menuItems };
+export { cartItems };
 
 export default function User() {
   const [totalItem, setTotalItem] = useState(0);
