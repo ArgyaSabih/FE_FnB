@@ -2,12 +2,15 @@ import React from "react";
 
 // Fokus bikin komponen-komponen utamanya dulu. localhost/payment return 404
 import { cartItems } from "../routes";
+import { useNavigate } from "react-router-dom";
 
 export default function PaymentPage() {
   function totalPrice(price, amount) {}
 
+  const navigateToComplete = useNavigate();
+
   return (
-    <section className="container bg-gradient-to-b from-[#eeeeee] to-white">
+    <div className="container m-0 w-screen h-screen bg-gradient-to-b from-[#eeeeee] to-white">
       <div className="">
         <div className="pt-8 mb-3 container flex justify-center">
           <svg
@@ -27,56 +30,59 @@ export default function PaymentPage() {
           Waiting for payment
         </div>
       </div>
-      <div className="py-5">
-        <div className="px-15 rounded-lg">
-          <div className="px-15 rounded-lg">
-            <h2 className="font-bold flex">Payment Step</h2>
-            <ol className="list-style-decimal">
+      <div className="my-5">
+        <div className="mx-15 rounded-lg bg-white">
+          <div className="mx-15 px-4 pt-4">
+            <h2 className="font-bold flex text-lg">Payment Step</h2>
+            <ol className="list-decimal">
               {" "}
               {/* Gimana caranya bikin lingkaran dg angka di dalam??? */}
-              <li className="block">
+              <li className="text-[#666666]">
                 Lorem ipsum dolor sit amet consectetur. Nulla non commodo vitae
                 sagittis diam pretium.{" "}
               </li>{" "}
-              <li className="flex justify-start">
+              <li className="text-[#666666]">
                 Eget quis neque turpis quis hendrerit. Proin cras iaculis et
                 urna lacus eget.{" "}
               </li>{" "}
-              <li className="flex justify-start">
+              <li className="text-[#666666]">
                 Varius turpis scelerisque viverra aliquet lectus eros.
               </li>
             </ol>
           </div>
         </div>
-        <div className="pt-10 mx-15 rounded-lg shadow-xl bg-slate-50">
-          <div className="">
-            <h2 className="flex">Ordered</h2>
+        <div className="mt-10 mx-15 rounded-lg bg-white">
+          <div className="p-4">
+            <div className="">
+              <h2 className="flex font-bold text-lg">Ordered</h2>
+            </div>
+            <div className="mt-5">
+              <ul>
+                {cartItems?.map((item) => (
+                  <li key={item.id} className="flex justify-between">
+                    <span className="flex font-semibold">{item.name}</span>
+                    <div className="flex justify-end mr-6">
+                      <span className="flex mr-4 text-[#999999]">
+                        x{item.amount}
+                      </span>
+                      <span className="flex font-bold">Rp 45.000,00</span>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="flex justify-between mr-6 mt-5 font-bold">
+              Total Payment <span>Rp 135.000,00</span>
+            </div>
           </div>
-          <div>
-            <ul>
-              {cartItems?.map((item) => (
-                <li key={item.id} className="flex justify-between">
-                  <span className="flex">{item.name}</span>
-                  <div className="flex justify-end mr-6">
-                    <span className="flex mr-4">x{item.amount}</span>
-                    <span className="flex">Rp 45.000,00</span>
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="flex justify-between mr-6">
-            Total Payment <span>Rp 135.000,00</span>
-          </div>
-          <div></div>
         </div>
       </div>
       <button
         className="absolute justify-center w-11/12 p-4 px-4 text-sm font-semibold text-center text-white bg-black rounded-full bottom-3"
-        onClick={() => navigateToPayment("/completed")}
+        onClick={() => navigateToComplete("/completed")}
       >
         Done
       </button>
-    </section>
+    </div>
   );
 }
