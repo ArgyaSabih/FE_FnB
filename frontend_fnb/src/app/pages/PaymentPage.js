@@ -10,7 +10,7 @@ export default function PaymentPage() {
   const navigateToComplete = useNavigate();
 
   return (
-    <div className="container m-0 w-screen h-screen bg-gradient-to-b from-[#eeeeee] via-[#eeeeee] via to-white">
+    <div className="container m-0 w-lvh h-lvh bg-gradient-to-b from-[#eeeeee] via-[#eeeeee] via to-white">
       <div className="">
         <div className="pt-6 mb-3 container flex justify-center">
           <svg
@@ -31,10 +31,10 @@ export default function PaymentPage() {
         </div>
       </div>
       <div className="my-5">
-        <div className="mx-15 rounded-2xl border-solid border-[1px] border-[#e8e8e8] bg-white">
+        <div className="mx-15 max-h-[30] rounded-2xl border-solid border-[1px] border-[#e8e8e8] bg-white">
           <div className="px-5 pt-6 pb-9">
             <h2 className="font-semibold pb-5 flex text-sm">Payment Step</h2>
-            <ol className="list-decimal">
+            <ol className="marker:text-blue list-decimal">
               {" "}
               {/* Gimana caranya bikin lingkaran dg angka di dalam??? */}
               <li className="text-xs text-[#666666]">
@@ -82,11 +82,12 @@ export default function PaymentPage() {
         </div>
       </div>
       <button
-        className="absolute justify-center w-11/12 p-4 px-4 text-sm font-semibold text-center text-white bg-black rounded-full bottom-3"
+        className="fixed justify-center w-11/12 p-4 px-4 text-sm font-semibold text-center text-white bg-black rounded-full bottom-3"
         onClick={() => navigateToComplete("/completed")}
       >
         Done
       </button>
+      <div className="p-7"></div>
     </div>
   );
 }

@@ -80,6 +80,78 @@ const cartItems = [
     amount: 2,
     price: 45000,
   },
+  {
+    id: 5,
+    name: "Japanese Chicken Gyoza",
+    amount: 2,
+    price: 45000,
+  },
+  {
+    id: 6,
+    name: "Japanese Chicken Gyoza",
+    amount: 1,
+    price: 30000,
+  },
+  {
+    id: 7,
+    name: "Japanese Chicken Gyoza",
+    amount: 1,
+    price: 30000,
+  },
+  {
+    id: 8,
+    name: "Japanese Chicken Gyoza",
+    amount: 2,
+    price: 45000,
+  },
+  {
+    id: 9,
+    name: "Japanese Chicken Gyoza",
+    amount: 2,
+    price: 45000,
+  },
+  {
+    id: 10,
+    name: "Japanese Chicken Gyoza",
+    amount: 1,
+    price: 30000,
+  },
+  {
+    id: 11,
+    name: "Japanese Chicken Gyoza",
+    amount: 1,
+    price: 30000,
+  },
+  {
+    id: 12,
+    name: "Japanese Chicken Gyoza",
+    amount: 2,
+    price: 45000,
+  },
+  {
+    id: 13,
+    name: "Japanese Chicken Gyoza",
+    amount: 2,
+    price: 45000,
+  },
+  {
+    id: 14,
+    name: "Japanese Chicken Gyoza",
+    amount: 1,
+    price: 30000,
+  },
+  {
+    id: 15,
+    name: "Japanese Chicken Gyoza",
+    amount: 1,
+    price: 30000,
+  },
+  {
+    id: 16,
+    name: "Japanese Chicken Gyoza",
+    amount: 2,
+    price: 45000,
+  },
 ];
 
 export { menuItems };
