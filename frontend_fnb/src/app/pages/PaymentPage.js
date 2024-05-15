@@ -10,7 +10,7 @@ export default function PaymentPage() {
   const navigateToComplete = useNavigate();
 
   return (
-    <div className="container m-0 w-lvh h-lvh bg-gradient-to-b from-[#eeeeee] via-[#eeeeee] via to-white">
+    <div className="container bg-fixed m-0 w-lvh h-lvh bg-gradient-to-b from-[#eeeeee] via-white via to-white">
       <div className="">
         <div className="pt-6 mb-3 container flex justify-center">
           <svg
@@ -34,21 +34,23 @@ export default function PaymentPage() {
         <div className="mx-15 max-h-[30] rounded-2xl border-solid border-[1px] border-[#e8e8e8] bg-white">
           <div className="px-5 pt-6 pb-9">
             <h2 className="font-semibold pb-5 flex text-sm">Payment Step</h2>
-            <ol className="marker:text-blue list-decimal">
-              {" "}
-              {/* Gimana caranya bikin lingkaran dg angka di dalam??? */}
-              <li className="text-xs text-[#666666]">
-                Lorem ipsum dolor sit amet consectetur. Nulla non commodo vitae
-                sagittis diam pretium.{" "}
-              </li>{" "}
-              <li className="py-4 text-xs text-[#666666]">
-                Eget quis neque turpis quis hendrerit. Proin cras iaculis et
-                urna lacus eget.{" "}
-              </li>{" "}
-              <li className="text-xs text-[#666666]">
-                Varius turpis scelerisque viverra aliquet lectus eros.
-              </li>
-            </ol>
+            <div className="ml-4">
+              <ol className="list-decimal-none">
+                {" "}
+                {/* Gimana caranya bikin lingkaran dg angka di dalam??? */}
+                <li className="text-xs text-[#666666] before:[">
+                  Lorem ipsum dolor sit amet consectetur. Nulla non commodo
+                  vitae sagittis diam pretium.{" "}
+                </li>{" "}
+                <li className="py-4 text-xs text-[#666666]">
+                  Eget quis neque turpis quis hendrerit. Proin cras iaculis et
+                  urna lacus eget.{" "}
+                </li>{" "}
+                <li className="text-xs text-[#666666]">
+                  Varius turpis scelerisque viverra aliquet lectus eros.
+                </li>
+              </ol>
+            </div>
           </div>
         </div>
         <div className="mt-3 rounded-2xl border-[1px] border-solid border-[#e8e8e8] bg-white">
