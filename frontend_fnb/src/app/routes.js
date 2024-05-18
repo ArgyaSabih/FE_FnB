@@ -1,10 +1,11 @@
 "use client";
-import React, {useState} from "react";
-import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
+import React, { useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Home from "./pages/Home";
 import DetailMenu from "./pages/DetailMenu";
 import Checkout from "./pages/Checkout";
+import PaymentPage from "./pages/PaymentPage";
 
 const menuItems = [
   {
@@ -14,7 +15,7 @@ const menuItems = [
     price: "30.555",
     image: "img/menu1.png",
     description:
-      "satu ipsum dolor sit amet consectetur. Hendrerit proin sit pulvinar id lectus lectus natoque dolor arcu. Ornare arcu amet sed in eu tellus id."
+      "satu ipsum dolor sit amet consectetur. Hendrerit proin sit pulvinar id lectus lectus natoque dolor arcu. Ornare arcu amet sed in eu tellus id.",
   },
   {
     id: 2,
@@ -23,7 +24,7 @@ const menuItems = [
     price: "45.000",
     image: "img/menu1.png",
     description:
-      "dua ipsum dolor sit amet consectetur. Hendrerit proin sit pulvinar id lectus lectus natoque dolor arcu. Ornare arcu amet sed in eu tellus id."
+      "dua ipsum dolor sit amet consectetur. Hendrerit proin sit pulvinar id lectus lectus natoque dolor arcu. Ornare arcu amet sed in eu tellus id.",
   },
   {
     id: 3,
@@ -32,7 +33,7 @@ const menuItems = [
     price: "45.000",
     image: "img/menu1.png",
     description:
-      "tiga ipsum dolor sit amet consectetur. Hendrerit proin sit pulvinar id lectus lectus natoque dolor arcu. Ornare arcu amet sed in eu tellus id."
+      "tiga ipsum dolor sit amet consectetur. Hendrerit proin sit pulvinar id lectus lectus natoque dolor arcu. Ornare arcu amet sed in eu tellus id.",
   },
   {
     id: 4,
@@ -41,7 +42,7 @@ const menuItems = [
     price: "45.000",
     image: "img/menu1.png",
     description:
-      "Lorem ipsum dolor sit amet consectetur. Hendrerit proin sit pulvinar id lectus lectus natoque dolor arcu. Ornare arcu amet sed in eu tellus id."
+      "Lorem ipsum dolor sit amet consectetur. Hendrerit proin sit pulvinar id lectus lectus natoque dolor arcu. Ornare arcu amet sed in eu tellus id.",
   },
   {
     id: 5,
@@ -50,11 +51,111 @@ const menuItems = [
     price: "45.000",
     image: "img/menu1.png",
     description:
-      "Lorem ipsum dolor sit amet consectetur. Hendrerit proin sit pulvinar id lectus lectus natoque dolor arcu. Ornare arcu amet sed in eu tellus id."
-  }
+      "Lorem ipsum dolor sit amet consectetur. Hendrerit proin sit pulvinar id lectus lectus natoque dolor arcu. Ornare arcu amet sed in eu tellus id.",
+  },
 ];
 
-export {menuItems};
+const cartItems = [
+  {
+    id: 1,
+    name: "Japanese Chicken Gyoza",
+    amount: 2,
+    price: 45000,
+  },
+  {
+    id: 2,
+    name: "Japanese Chicken Gyoza",
+    amount: 1,
+    price: 30000,
+  },
+  {
+    id: 3,
+    name: "Japanese Chicken Gyoza",
+    amount: 1,
+    price: 30000,
+  },
+  {
+    id: 4,
+    name: "Japanese Chicken Gyoza",
+    amount: 2,
+    price: 45000,
+  },
+  {
+    id: 5,
+    name: "Japanese Chicken Gyoza",
+    amount: 2,
+    price: 45000,
+  },
+  {
+    id: 6,
+    name: "Japanese Chicken Gyoza",
+    amount: 1,
+    price: 30000,
+  },
+  {
+    id: 7,
+    name: "Japanese Chicken Gyoza",
+    amount: 1,
+    price: 30000,
+  },
+  {
+    id: 8,
+    name: "Japanese Chicken Gyoza",
+    amount: 2,
+    price: 45000,
+  },
+  {
+    id: 9,
+    name: "Japanese Chicken Gyoza",
+    amount: 2,
+    price: 45000,
+  },
+  {
+    id: 10,
+    name: "Japanese Chicken Gyoza",
+    amount: 1,
+    price: 30000,
+  },
+  {
+    id: 11,
+    name: "Japanese Chicken Gyoza",
+    amount: 1,
+    price: 30000,
+  },
+  {
+    id: 12,
+    name: "Japanese Chicken Gyoza",
+    amount: 2,
+    price: 45000,
+  },
+  {
+    id: 13,
+    name: "Japanese Chicken Gyoza",
+    amount: 2,
+    price: 45000,
+  },
+  {
+    id: 14,
+    name: "Japanese Chicken Gyoza",
+    amount: 1,
+    price: 30000,
+  },
+  {
+    id: 15,
+    name: "Japanese Chicken Gyoza",
+    amount: 1,
+    price: 30000,
+  },
+  {
+    id: 16,
+    name: "Japanese Chicken Gyoza",
+    amount: 2,
+    price: 45000,
+  },
+];
+
+export { menuItems };
+export { cartItems };
 
 export default function User() {
   const [totalItem, setTotalItem] = useState(0);
@@ -83,9 +184,13 @@ export default function User() {
 
   const handleClickAddToCart = () => {
     if (selectedItem && selectedItem.price) {
-      const item = menuItems.find((menuItem) => menuItem.id === selectedItem.id);
+      const item = menuItems.find(
+        (menuItem) => menuItem.id === selectedItem.id
+      );
       if (item) {
-        setTotalPrice(parseFloat(totalPrice) + parseFloat(selectedItem.price) * totalItem);
+        setTotalPrice(
+          parseFloat(totalPrice) + parseFloat(selectedItem.price) * totalItem
+        );
       }
     }
     setTotalOrder(totalOrder + totalItem);
@@ -125,8 +230,15 @@ export default function User() {
         />
         <Route
           path="/checkout"
-          element={<Checkout totalPrice={totalPrice} totalOrder={totalOrder} selectedItem={selectedItem} />}
+          element={
+            <Checkout
+              totalPrice={totalPrice}
+              totalOrder={totalOrder}
+              selectedItem={selectedItem}
+            />
+          }
         />
+        <Route path="/payment" element={<PaymentPage />} />
       </Routes>
     </Router>
   );
