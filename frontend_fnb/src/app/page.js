@@ -1,9 +1,20 @@
 import React from "react";
-import User from "./routes";
-
-import "tailwindcss/tailwind.css";
 import "./globals.css";
 
-export default function App() {
-  return <User />;
-}
+import Header from "../components/Header";
+import Hero from "../components/Hero";
+import FilterMenu from "../components/FilterMenu";
+import Menu from "../components/Menu";
+
+const Home = () => {
+  return (
+    <>
+      <Header />
+      <Hero />
+      <FilterMenu />
+      <Menu />
+    </>
+  );
+};
+
+export default Home;

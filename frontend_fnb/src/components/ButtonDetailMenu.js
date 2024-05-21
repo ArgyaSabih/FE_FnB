@@ -1,27 +1,19 @@
 import React from "react";
+import {useUser} from "@/contexts/UserContext";
 import ButtonIncrementDecrement from "./ButtonIncrementDecrement";
 
-export default function ButtonDetailMenu({
-  totalItem,
-  onTotalOrderChange,
-  onClickAddToCart,
-  opacity,
-  text,
-  disabled
-}) {
+const ButtonDetailMenu = () => {
+  const {handleClickAddToCart, opacity, disabled, text} = useUser();
+
   return (
     <div>
-      <ButtonIncrementDecrement
-        totalItem={totalItem}
-        disabled={disabled}
-        onTotalOrderChange={onTotalOrderChange}
-      />
+      <ButtonIncrementDecrement />
       <div>
         <button
           style={{
             opacity: opacity
           }}
-          onClick={onClickAddToCart}
+          onClick={handleClickAddToCart}
           disabled={disabled}
           className="w-full p-4 text-white bg-black rounded-xl"
         >
@@ -30,4 +22,6 @@ export default function ButtonDetailMenu({
       </div>
     </div>
   );
-}
+};
+
+export default ButtonDetailMenu;

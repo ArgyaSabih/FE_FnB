@@ -1,15 +1,17 @@
 import React from "react";
+import {useUser} from "@/contexts/UserContext";
 
-export default function ButtonIncrementDecrement({totalItem, disabled, onTotalOrderChange}) {
+const ButtonIncrementDecrement = () => {
+  const {totalItem, handleTotalOrderChange, disabled} = useUser();
   const increment = () => {
     if (totalItem < 20) {
-      onTotalOrderChange(totalItem + 1);
+      handleTotalOrderChange(totalItem + 1);
     }
   };
 
   const decrement = () => {
     if (totalItem > 0) {
-      onTotalOrderChange(totalItem - 1);
+      handleTotalOrderChange(totalItem - 1);
     }
   };
 
@@ -36,4 +38,6 @@ export default function ButtonIncrementDecrement({totalItem, disabled, onTotalOr
       </button>
     </div>
   );
-}
+};
+
+export default ButtonIncrementDecrement;
