@@ -7,7 +7,7 @@ const ButtonClose = () => {
 
   return (
     <>
-      <Link href={"/"}>
+      <Link href={"/home"}>
         <button
           onClick={() => {
             handleCloseDetailMenu();

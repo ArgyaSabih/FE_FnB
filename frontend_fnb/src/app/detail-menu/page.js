@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-import Link from "next/link";
 
 import {useUser, menuItems} from "@/contexts/UserContext";
 import ButtonDetailMenu from "@/components/ButtonDetailMenu";

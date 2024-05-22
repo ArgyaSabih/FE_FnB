@@ -1,17 +1,33 @@
+"use client";
 import React from "react";
 import {useUser} from "@/contexts/UserContext";
+import {menuItems} from "@/contexts/UserContext";
 
 const ButtonIncrementDecrement = () => {
-  const {totalItem, handleTotalOrderChange, disabled} = useUser();
+  const {totalItem, handleTotalOrderChange, updatePesanan, selectedItem, disabled} = useUser();
+  const item = menuItems.find((menuItem) => menuItem.id === selectedItem?.id);
+
   const increment = () => {
-    if (totalItem < 20) {
+    if (totalItem < 20 && item) {
       handleTotalOrderChange(totalItem + 1);
+      updatePesanan({
+        id: item.id,
+        name: item.name,
+        price: item.price,
+        update: 1
+      });
     }
   };
 
   const decrement = () => {
-    if (totalItem > 0) {
+    if (totalItem > 0 && item) {
       handleTotalOrderChange(totalItem - 1);
+      updatePesanan({
+        id: item.id,
+        name: item.name,
+        price: item.price,
+        update: -1
+      });
     }
   };
 

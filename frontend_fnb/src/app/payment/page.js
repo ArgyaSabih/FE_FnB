@@ -49,7 +49,7 @@ export default function PaymentPage() {
             </div>
             <div>
               <ul>
-                {menuItems.map((item) => (
+                {menuItems?.map((item) => (
                   <li key={item.id} className="flex justify-between pt-3 text-xs">
                     <span className="flex font-medium">{item.name}</span>
                     <div className="flex justify-end mr-6">

@@ -16,7 +16,7 @@ const Checkout = () => {
       </header>
       <div className="flex justify-end">{totalOrder} items selected</div>
       <ul className="max-h-[55%] overflow-x-auto">
-        {menuItems.map((item, index) => (
+        {menuItems?.map((item, index) => (
           <li
             key={index}
             className="flex justify-between p-2.5 m-2 bg-gray-100 rounded-lg border-[1px] border-gray-400 bg-opacity-60"

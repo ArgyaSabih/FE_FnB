@@ -1,20 +1,10 @@
 import React from "react";
 import "./globals.css";
 
-import Header from "../components/Header";
-import Hero from "../components/Hero";
-import FilterMenu from "../components/FilterMenu";
-import Menu from "../components/Menu";
+import LoginForm from "@/components/LoginForm";
 
-const Home = () => {
-  return (
-    <>
-      <Header />
-      <Hero />
-      <FilterMenu />
-      <Menu />
-    </>
-  );
+const App = () => {
+  return <LoginForm />;
 };
 
-export default Home;
+export default App;

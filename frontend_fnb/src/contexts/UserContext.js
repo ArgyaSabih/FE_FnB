@@ -59,11 +59,12 @@ export const menuItems = [
 export const UserProvider = ({children}) => {
   const [totalItem, setTotalItem] = useState(0);
   const [totalOrder, setTotalOrder] = useState(0);
-  const [totalPrice, setTotalPrice] = useState(0);
+  const [totalPrice, setTotalPrice] = useState(0); // Inisialisasi sebagai angka
   const [opacity, setOpacity] = useState("100%");
   const [text, setText] = useState("Add to cart");
   const [disabled, setDisabled] = useState(null);
   const [selectedItem, setSelectedItem] = useState(null);
+  const [dataPesanan, setDataPesanan] = useState([]);
 
   const handleClickItem = (item) => {
     setSelectedItem(item);
@@ -82,37 +83,56 @@ export const UserProvider = ({children}) => {
   };
 
   const handleClickAddToCart = () => {
-    if (totalItem > 0) {
-      if (selectedItem && selectedItem.price) {
-        const item = menuItems.find((menuItem) => menuItem.id === selectedItem.id);
-        if (item) {
-          setTotalPrice(parseFloat(totalPrice) + parseFloat(selectedItem.price) * totalItem);
-        }
+    if (totalItem > 0 && selectedItem) {
+      const item = menuItems.find((menuItem) => menuItem.id === selectedItem.id);
+      if (item) {
+        const newTotalPrice = parseFloat(totalPrice) + parseFloat(selectedItem.price) * totalItem;
+        setTotalPrice(newTotalPrice);
       }
-      setTotalOrder(totalOrder + totalItem);
+      setTotalOrder((prevOrder) => prevOrder + totalItem);
       setOpacity("50%");
       setText("Added to cart");
       setDisabled(true);
+      updatePesanan({
+        id: selectedItem.id,
+        name: selectedItem.name,
+        price: selectedItem.price,
+        update: totalItem
+      });
     } else {
       setDisabled(false);
     }
   };
 
-  function formatPrice(totalPrice) {
-    let priceString = totalPrice.toString();
-    if (priceString.includes(".")) {
-      const [integerPart, decimalPart] = priceString.split(".");
-      if (decimalPart.length < 3) {
-        const zerosToAdd = 3 - decimalPart.length;
-        const newDecimalPart = decimalPart + "0".repeat(zerosToAdd);
-        return `${integerPart}.${newDecimalPart}`;
-      } else {
-        return priceString;
-      }
-    } else {
-      return `${priceString}.000`;
-    }
+  function formatPrice(price) {
+    const priceString = parseFloat(price).toFixed(3);
+    return priceString;
   }
+
+  const updatePesanan = ({id, name, price, update}) => {
+    const indexPesanan = dataPesanan.findIndex((item) => item.id === id);
+
+    if (indexPesanan !== -1) {
+      const copyDataPesanan = [...dataPesanan];
+      copyDataPesanan[indexPesanan].amount += update;
+
+      if (copyDataPesanan[indexPesanan].amount === 0) {
+        copyDataPesanan.splice(indexPesanan, 1);
+      }
+
+      setDataPesanan(copyDataPesanan);
+    } else {
+      setDataPesanan([
+        ...dataPesanan,
+        {
+          id,
+          name,
+          price,
+          amount: update
+        }
+      ]);
+    }
+  };
 
   return (
     <UserContext.Provider
@@ -125,10 +145,12 @@ export const UserProvider = ({children}) => {
         handleTotalOrderChange,
         handleCloseDetailMenu,
         handleClickAddToCart,
+        updatePesanan,
         opacity,
         text,
         disabled,
-        formatPrice
+        formatPrice,
+        dataPesanan
       }}
     >
       {children}

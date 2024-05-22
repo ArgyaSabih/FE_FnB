@@ -12,7 +12,7 @@ const Menu = () => {
     <section className="pb-4 bg-white">
       <div className="container mx-auto">
         <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
-          {menuItems.map((item) => (
+          {menuItems?.map((item) => (
             <div key={item.id} className="p-4 rounded-lg shadow-xl bg-slate-50 ">
               <img src={item.image} alt={item.name} className="object-cover w-full h-40 mb-4 rounded-lg" />
               <h3 className="mb-2 text-lg font-bold">{item.name}</h3>
