@@ -3,11 +3,11 @@ import {useUser} from "@/contexts/UserContext";
 import ButtonIncrementDecrement from "./ButtonIncrementDecrement";
 
 const ButtonDetailMenu = () => {
-  const {handleClickAddToCart, opacity, disabled, text} = useUser();
+  const {totalItem, setTotalItem, handleClickAddToCart, opacity, disabled, text} = useUser();
 
   return (
     <div>
-      <ButtonIncrementDecrement />
+      <ButtonIncrementDecrement totalItem={totalItem} setTotalItem={setTotalItem} />
       <div>
         <button
           style={{

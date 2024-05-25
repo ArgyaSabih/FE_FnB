@@ -1,39 +1,24 @@
-"use client";
 import React from "react";
 import {useUser} from "@/contexts/UserContext";
 import {menuItems} from "@/contexts/UserContext";
 
-const ButtonIncrementDecrement = () => {
-  const {totalItem, handleTotalOrderChange, updatePesanan, selectedItem, disabled} = useUser();
+const ButtonIncrementDecrement = ({totalItem, setTotalItem}) => {
+  const {selectedItem, disabled} = useUser();
   const item = menuItems.find((menuItem) => menuItem.id === selectedItem?.id);
-
-  const increment = () => {
-    if (totalItem < 20 && item) {
-      handleTotalOrderChange(totalItem + 1);
-      updatePesanan({
-        id: item.id,
-        name: item.name,
-        price: item.price,
-        update: 1
-      });
+  const update = (change) => {
+    if (change > 0) {
+      if (totalItem > 20 - change) return;
+    } else if (change < 0) {
+      if (totalItem < 0 - change) return;
     }
-  };
 
-  const decrement = () => {
-    if (totalItem > 0 && item) {
-      handleTotalOrderChange(totalItem - 1);
-      updatePesanan({
-        id: item.id,
-        name: item.name,
-        price: item.price,
-        update: -1
-      });
-    }
+    if (!item) return;
+    setTotalItem(totalItem + change);
   };
 
   return (
     <div className="flex justify-end gap-3 my-4">
-      <button onClick={decrement} disabled={disabled}>
+      <button onClick={() => update(-1)} disabled={disabled}>
         <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
           <circle cx="14" cy="14" r="13.5" fill="#EEEEEE" stroke="#EEEEEE" />
           <path
@@ -43,7 +28,7 @@ const ButtonIncrementDecrement = () => {
         </svg>
       </button>
       <div className="text-[#FF5800] content-center">{totalItem}</div>
-      <button onClick={increment} disabled={disabled}>
+      <button onClick={() => update(1)} disabled={disabled}>
         <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
           <circle cx="14" cy="14" r="13.5" fill="#EEEEEE" stroke="#EEEEEE" />
           <path

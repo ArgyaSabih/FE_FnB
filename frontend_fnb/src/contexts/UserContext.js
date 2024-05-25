@@ -16,7 +16,7 @@ export const menuItems = [
   },
   {
     id: 2,
-    name: "Japanese Chicken Gyoza",
+    name: "Mie Ayam Bakso",
     amount: 2,
     ingredients: "Chicken, mie, gyoza, ice tea",
     price: "45.000",
@@ -26,30 +26,30 @@ export const menuItems = [
   },
   {
     id: 3,
-    name: "Japanese Chicken Gyoza",
+    name: "Nasi Goreng Pak Taman",
     amount: 1,
     ingredients: "Chicken, mie, gyoza, ice tea",
-    price: "45.000",
+    price: "40.000",
     image: "img/menu1.png",
     description:
       "tiga ipsum dolor sit amet consectetur. Hendrerit proin sit pulvinar id lectus lectus natoque dolor arcu. Ornare arcu amet sed in eu tellus id."
   },
   {
     id: 4,
-    name: "Japanese Chicken Gyoza",
+    name: "Nasi Kulit Terserah",
     amount: 2,
     ingredients: "Chicken, mie, gyoza, ice tea",
-    price: "45.000",
+    price: "30.000",
     image: "img/menu1.png",
     description:
       "Lorem ipsum dolor sit amet consectetur. Hendrerit proin sit pulvinar id lectus lectus natoque dolor arcu. Ornare arcu amet sed in eu tellus id."
   },
   {
     id: 5,
-    name: "Japanese Chicken Gyoza",
+    name: "Preksu",
     amount: 1,
     ingredients: "Chicken, mie, gyoza, ice tea",
-    price: "45.000",
+    price: "20.000",
     image: "img/menu1.png",
     description:
       "Lorem ipsum dolor sit amet consectetur. Hendrerit proin sit pulvinar id lectus lectus natoque dolor arcu. Ornare arcu amet sed in eu tellus id."
@@ -70,12 +70,31 @@ export const UserProvider = ({children}) => {
     setSelectedItem(item);
   };
 
-  const handleTotalOrderChange = (value) => {
-    setTotalItem(value);
+  const handleTotalOrderChange = ({id, name, price, update}) => {
+    const indexPesanan = dataPesanan.findIndex((item) => item.id === id);
+
+    if (indexPesanan !== -1) {
+      const copyDataPesanan = [...dataPesanan];
+      copyDataPesanan[indexPesanan].amount += update;
+
+      setDataPesanan(copyDataPesanan);
+    } else {
+      setDataPesanan([
+        ...dataPesanan,
+        {
+          id,
+          name,
+          price,
+          amount: update
+        }
+      ]);
+    }
+
+    setTotalOrder(totalOrder + update);
+    setTotalPrice(totalPrice + update * price);
   };
 
   const handleCloseDetailMenu = () => {
-    setSelectedItem(null);
     setTotalItem(0);
     setDisabled(false);
     setOpacity("100%");
@@ -83,17 +102,11 @@ export const UserProvider = ({children}) => {
   };
 
   const handleClickAddToCart = () => {
-    if (totalItem > 0 && selectedItem) {
-      const item = menuItems.find((menuItem) => menuItem.id === selectedItem.id);
-      if (item) {
-        const newTotalPrice = parseFloat(totalPrice) + parseFloat(selectedItem.price) * totalItem;
-        setTotalPrice(newTotalPrice);
-      }
-      setTotalOrder((prevOrder) => prevOrder + totalItem);
+    if (totalItem && selectedItem) {
       setOpacity("50%");
       setText("Added to cart");
       setDisabled(true);
-      updatePesanan({
+      handleTotalOrderChange({
         id: selectedItem.id,
         name: selectedItem.name,
         price: selectedItem.price,
@@ -109,43 +122,21 @@ export const UserProvider = ({children}) => {
     return priceString;
   }
 
-  const updatePesanan = ({id, name, price, update}) => {
-    const indexPesanan = dataPesanan.findIndex((item) => item.id === id);
-
-    if (indexPesanan !== -1) {
-      const copyDataPesanan = [...dataPesanan];
-      copyDataPesanan[indexPesanan].amount += update;
-
-      if (copyDataPesanan[indexPesanan].amount === 0) {
-        copyDataPesanan.splice(indexPesanan, 1);
-      }
-
-      setDataPesanan(copyDataPesanan);
-    } else {
-      setDataPesanan([
-        ...dataPesanan,
-        {
-          id,
-          name,
-          price,
-          amount: update
-        }
-      ]);
-    }
-  };
-
   return (
     <UserContext.Provider
       value={{
         totalItem,
+        setTotalItem,
+        setTotalOrder,
         totalOrder,
         totalPrice,
+        setTotalPrice,
         selectedItem,
+        setSelectedItem,
         handleClickItem,
         handleTotalOrderChange,
         handleCloseDetailMenu,
         handleClickAddToCart,
-        updatePesanan,
         opacity,
         text,
         disabled,

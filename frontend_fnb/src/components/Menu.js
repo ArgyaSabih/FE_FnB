@@ -45,7 +45,7 @@ const Menu = () => {
             </div>
           ))}
         </div>
-        {totalOrder > 0 && <TotalOrder />}
+        {totalOrder && <TotalOrder />}
       </div>
     </section>
   );

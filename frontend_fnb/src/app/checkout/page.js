@@ -1,33 +1,48 @@
 "use client";
 import React from "react";
 import Link from "next/link";
-import {useUser, menuItems} from "@/contexts/UserContext";
+import {useUser} from "@/contexts/UserContext";
 import ButtonIncrementDecrement from "@/components/ButtonIncrementDecrement";
 import ButtonClose from "@/components/ButtonClose";
 
 const Checkout = () => {
-  const {totalOrder, totalPrice, formatPrice} = useUser();
+  const {totalOrder, totalPrice, formatPrice, dataPesanan, handleTotalOrderChange} = useUser();
 
   return (
     <div className="h-screen overflow-hidden bg-white">
       <header className="flex my-4">
-        <ButtonClose />
+        <Link href={"/home"}>
+          <ButtonClose />
+        </Link>
         <div className="pr-6 mx-auto text-xl font-semibold text-center">Order List</div>
       </header>
       <div className="flex justify-end">{totalOrder} items selected</div>
       <ul className="max-h-[55%] overflow-x-auto">
-        {menuItems?.map((item, index) => (
-          <li
-            key={index}
-            className="flex justify-between p-2.5 m-2 bg-gray-100 rounded-lg border-[1px] border-gray-400 bg-opacity-60"
-          >
-            <div>
-              <p className="leading-8">{item.name}</p>
-              <p className="leading-4">Rp {item.price}</p>
-            </div>
-            <ButtonIncrementDecrement />
-          </li>
-        ))}
+        {dataPesanan?.map((item, index) => {
+          return (
+            <li
+              key={index}
+              className="flex justify-between p-2.5 m-2 bg-gray-100 rounded-lg border-[1px] border-gray-400 bg-opacity-60"
+            >
+              <div>
+                <p className="leading-8">{item.name}</p>
+                <p className="leading-4">Rp {item.price}</p>
+              </div>
+              <ButtonIncrementDecrement
+                totalItem={item?.amount}
+                setTotalItem={(amt) => {
+                  const incr = amt - item.amount;
+                  handleTotalOrderChange({
+                    id: item.id,
+                    name: item.name,
+                    price: item.price,
+                    update: incr
+                  });
+                }}
+              />
+            </li>
+          );
+        })}
       </ul>
       <div className="flex items-center justify-between mx-2 my-4">
         <div>Subtotal</div>

@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import Link from "next/link";
 
 import {useUser, menuItems} from "@/contexts/UserContext";
 import ButtonDetailMenu from "@/components/ButtonDetailMenu";
@@ -21,7 +22,9 @@ const DetailMenu = () => {
   return (
     <div className={"h-screen bg-white overflow-hidden"}>
       <header className="flex pt-4">
-        <ButtonClose />
+        <Link href={"/home"}>
+          <ButtonClose />
+        </Link>
         <h1 className="pr-6 mx-auto text-2xl font-medium text-center">Detail menu</h1>
       </header>
       <main className="py-2 h-3/4">
